@@ -1,15 +1,15 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "exampledb",
+    "password": "$Kiwl132010",
+    "database": "sharePac",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": null,
-    "database": "testdb",
+    "database": "sharePac",
     "host": "localhost",
     "dialect": "mysql",
     "logging": false
