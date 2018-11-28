@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "$Kiwl132010",
+    "password": null,
     "database": "sharePac",
     "host": "localhost",
     "dialect": "mysql"
