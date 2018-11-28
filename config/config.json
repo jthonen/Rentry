@@ -1,9 +1,10 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "exampledb",
+    "password": "",
+    "database": "sharePac",
     "host": "localhost",
+    "port": 3306,
     "dialect": "mysql"
   },
   "test": {
