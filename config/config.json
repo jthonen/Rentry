@@ -4,6 +4,7 @@
     "password": null,
     "database": "sharePac",
     "host": "localhost",
+    "port": 3306,
     "dialect": "mysql"
   },
   "test": {
