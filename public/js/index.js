@@ -1,8 +1,12 @@
 // Get references to page elements
 var $exampleText = $("#example-text");
+var $email = $("#email-text");
+var $password = $("#pass-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
+var credential = require('credential'), pw = credential();
+
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -97,3 +101,12 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+//Handle password validation
+var checkPassword = function(){
+  pw.hash($password, function (err, hash) {
+    if (err) { throw err; }
+    console.log('Store the password hash.', hash);
+    //use hash fro comparision
+  });
+}
