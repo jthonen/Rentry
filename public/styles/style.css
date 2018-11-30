@@ -22,22 +22,10 @@
     grid-template-columns: auto auto auto auto;
     grid-template-rows: auto auto auto auto; */
 }
-.button {
+.email {
     float: left;
 }
-/* .email {
-    grid-column: 1;
-    grid-row: 2;
-}
 .password {
-    grid-column: 1;
-    grid-row: 3;
+    float: right;
 }
-.login{
-    grid-column: 2;
-    grid-row: 4;
-}
-.sign-up {
-    grid-column: 3;
-    grid-row: 4;
-} */
+
