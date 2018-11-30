@@ -11,8 +11,9 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
-    border-radius: 50px;
+    border-radius: 50px 200px 50px 200px;
     opacity: .8;
+    box-shadow: 10px 10px;
 }
 .two {
     grid-column: 3;
