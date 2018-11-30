@@ -22,6 +22,7 @@ module.exports = function(sequelize, DataTypes) {
   User.associate = function(models) {
     // We're saying that a User should belong to a Group
     User.belongsTo(models.Group);
+    User.hasMany(models.Item);
   };
   return User;
 };
