@@ -1,24 +1,43 @@
 .grid{
     display: grid;
-    grid-template-columns: 25px auto auto 25px;
-    grid-template-rows: 25px auto 25px;
-    grid-column-gap: 25px;
-    background-color: grey;
+    grid-template-columns: 5% 55% 35% 5%;
+    grid-template-rows: 5% 90% 5%;
+    grid-column-gap: 20px;
     height: 100vh;
 }
-
 .one { 
-    background-color: blue;
     border: 1px solid rgba(0, 0, 0, 0.8);
     grid-column: 2;
     grid-row: 2 ;
     height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
-
 .two {
-    background-color: green;
     border: 1px solid rgba(0, 0, 0, 0.8);
     grid-column: 3;
     grid-row: 2 ;
     height: 100%;
+    /* display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto auto auto; */
 }
+.button {
+    float: left;
+}
+/* .email {
+    grid-column: 1;
+    grid-row: 2;
+}
+.password {
+    grid-column: 1;
+    grid-row: 3;
+}
+.login{
+    grid-column: 2;
+    grid-row: 4;
+}
+.sign-up {
+    grid-column: 3;
+    grid-row: 4;
+} */
