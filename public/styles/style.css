@@ -1,0 +1,41 @@
+.grid{
+    display: grid;
+    grid-template-columns: 5% 55% 35% 5%;
+    grid-template-rows: 5% 90% 5%;
+    grid-column-gap: 20px;
+    height: 100vh;
+}
+.one { 
+    grid-column: 2;
+    grid-row: 2 ;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50px;
+    opacity: .8;
+}
+.two {
+    grid-column: 3;
+    grid-row: 2 ;
+    height: 100%;
+    display: grid;
+    grid-template-columns:5% auto 5%;
+    grid-template-rows: auto 10% 10% auto auto;
+}
+.form {
+    grid-row: 4;
+    grid-column: 2;
+}
+.header {
+    grid-row: 3;
+    grid-column: 2; 
+}
+h1 {
+    letter-spacing: 10px;
+}
+h3 { 
+    letter-spacing:3px;
+    margin-top:5px;
+}
+
+
