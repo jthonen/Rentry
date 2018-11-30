@@ -1,0 +1,24 @@
+.grid{
+    display: grid;
+    grid-template-columns: 25px auto auto 25px;
+    grid-template-rows: 25px auto 25px;
+    grid-column-gap: 25px;
+    background-color: grey;
+    height: 100vh;
+}
+
+.one { 
+    background-color: blue;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    grid-column: 2;
+    grid-row: 2 ;
+    height: 100%;
+}
+
+.two {
+    background-color: green;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    grid-column: 3;
+    grid-row: 2 ;
+    height: 100%;
+}
