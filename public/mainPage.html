@@ -26,14 +26,16 @@
             <div class="ui primary basic button add-item">Add Item</div>
         </a>
         <div class="right menu">
-            <div class="ui vertical menu">
-                <div class="ui dropdown item">
-                    Sort by Category
+            <div class="field">
+                <label class="header">Sort by Category</label>
+                <div class="ui selection dropdown">
+                    <input type="hidden" name="Category">
                     <i class="dropdown icon"></i>
+                    <div class="default text">All Items</div>
                     <div class="menu">
-                        <a class="item">Electronics</a>
-                        <a class="item">Automotive</a>
-                        <a class="item">Home</a>
+                        <div class="item" data-value="2">Books</div>
+                        <div class="item" data-value="1">Tools</div>
+                        <div class="item" data-value="0">Clothing</div>
                     </div>
                 </div>
             </div>
@@ -309,23 +311,40 @@
                         <form class="ui form">
                             <div class="field">
                               <label>Item Name</label>
-                              <input placeholder="Super cool thing to share with friends">
+                              <input placeholder="Super cool stuff">
                             </div>
                             <div class="field">
-                              <label>Quantity</label>
-                              <input type="text" name="last-name" placeholder="Last Name">
+                                <label>Quantity</label>
+                                <div class="ui selection dropdown">
+                                    <input type="hidden" name="quantity">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text">1</div>
+                                    <div class="menu">
+                                        <div class="item" data-value="4">1</div>
+                                        <div class="item" data-value="3">2</div>
+                                        <div class="item" data-value="2">3</div>
+                                        <div class="item" data-value="1">4</div>
+                                        <div class="item" data-value="0">5</div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="field">
-                                <label>Short Text</label>
+                                <label>Category</label>
+                                <div class="ui selection dropdown">
+                                    <input type="hidden" name="Category">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text">Tools</div>
+                                    <div class="menu">
+                                        <div class="item" data-value="2">Books</div>
+                                        <div class="item" data-value="1">Tools</div>
+                                        <div class="item" data-value="0">Clothing</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Description</label>
                                 <textarea rows="2"></textarea>
                             </div>
-                            <div class="field">
-                              <div class="ui checkbox">
-                                <input type="checkbox" tabindex="0" class="hidden">
-                                <label>I agree to the Terms and Conditions</label>
-                              </div>
-                            </div>
-                            <button class="ui button" type="submit">Submit</button>
                           </form>
                 </div>
                 <!--borrow or deny buttons-->
@@ -387,6 +406,11 @@
                         .modal('hide')
                         ;
                 });
+                //semantic make dropdown work in add item
+                $('.selection.dropdown')
+                    .dropdown()
+                    ;
+                
 
             </script>
 
