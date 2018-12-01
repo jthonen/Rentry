@@ -317,3 +317,10 @@ $exampleList.on("click", ".delete", handleDeleteBtnClick);
 //login and sign in buttons
 $(document).on("click", "#login", loginHandler);
 $("#yes-signup").on("click", signUpHandler);
+
+$(document).on("click", "#sign-up", function() {
+  return $.ajax({
+    url: "/signup",
+    type: "GET"
+  });
+});
