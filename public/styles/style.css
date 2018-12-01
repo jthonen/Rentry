@@ -134,6 +134,11 @@ h3 {
 
 }
 
+.logo {
+    width: 50px;
+    height:auto;
+}
+
 /* @media screen and (max-width: 320px) {
 
 }
