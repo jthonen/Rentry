@@ -34,7 +34,7 @@ module.exports = function(app) {
             };
 
             db.User.create(user).then(function(user) {
-            res.json(user);
+            res.json(true);
             });
         })
         
