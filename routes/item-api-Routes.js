@@ -8,6 +8,16 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/items/:id", function(req, res) {
+    db.Item.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(result) {
+      res.json(result);
+    })
+  })
+
   // Create a new example
   app.post("/api/items", function(req, res) {
     db.Item.create(req.body).then(function(result) {
@@ -16,10 +26,11 @@ module.exports = function(app) {
   });
 
   app.put("/api/items/:id", function(req,res) {
-    db.Item.update({
-      where: {
-        id: req.params.id
-      }
+    db.Item.update(
+      req.body, {
+        where: {
+          id: req.params.id
+        }
     }).then(function(result) {
       res.json(result);
     });
