@@ -19,7 +19,7 @@
     <!--Navbar-->
     <div class="ui menu">
         <div class="header item">
-            <img id="logo" src="images/sharePac(head).png"/>
+            <img src="https://github.com/jthonen/Rentry/blob/master/public/images/sharePac(head).png?raw=true" alt="company logo">
         </div>
         <a class="item">
             <!--add-item button-->
@@ -33,9 +33,16 @@
                     <i class="dropdown icon"></i>
                     <div class="default text">All Items</div>
                     <div class="menu">
-                        <div class="item" data-value="2">Books</div>
-                        <div class="item" data-value="1">Tools</div>
-                        <div class="item" data-value="0">Clothing</div>
+                    	<!--all select-->
+                    	<div class="item all-select" data-value="4">All Items</div>
+                    	<!--books-select-->
+                        <div class="item books-select" data-value="3">Books</div>
+                        <!--tools-select-->
+                        <div class="item tools-select" data-value="2">Tools</div>
+                        <!--clothing-select-->
+                        <div class="item clothing-select" data-value="1">Clothing</div>
+                        <!--available-select-->
+                        <div class="item available-select" data-value="0">Available Now</div>
                     </div>
                 </div>
             </div>
@@ -50,7 +57,8 @@
 
     <div class="ui stackable special centered cards">
             <!-- <div class="ui special cards"> -->
-                <div class="card">
+            <!--tool card-->
+                <div class="card tool available">
                     <div class="blurring dimmable image">
                         <div class="ui inverted dimmer">
                             <div class="content">
@@ -70,7 +78,8 @@
                     </div>
                 </div>
                 <!-- <div class="ui special cards"> -->
-                    <div class="card">
+                <!--book card-->
+                    <div class="card book unavailable">
                         <div class="blurring dimmable image">
                             <div class="ui inverted dimmer">
                                 <div class="content">
@@ -93,7 +102,8 @@
                     </div>
                 <!-- </div> -->
                 <!-- <div class="ui special cards"> -->
-                    <div class="card">
+                	<!--tool card-->
+                    <div class="card tool available">
                         <div class="blurring dimmable image">
                             <div class="ui inverted dimmer">
                                 <div class="content">
@@ -113,7 +123,8 @@
                         </div>
                     </div>
                     <!-- <div class="ui special cards"> -->
-                        <div class="card">
+                    	<!--book card-->
+                        <div class="card book unavailable">
                             <div class="blurring dimmable image">
                                 <div class="ui inverted dimmer">
                                     <div class="content">
@@ -136,7 +147,8 @@
                         </div>
                     <!-- </div> -->
                     <!-- <div class="ui special cards"> -->
-                <div class="card">
+                <!--clothing card-->
+                <div class="card clothing available">
                     <div class="blurring dimmable image">
                         <div class="ui inverted dimmer">
                             <div class="content">
@@ -148,7 +160,7 @@
                         </div>
                         <!--product-img div-->
 
-                        <img src="https://images.homedepot-static.com/productImages/73f41014-9263-4fca-ba30-6a5911a3ee5c/svn/dewalt-circular-saws-dcs570b-64_1000.jpg">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/613BCaoaS6L._UX385_.jpg">
                     </div>
                     <!--available div-->
                     <div class="content available">
@@ -156,7 +168,8 @@
                     </div>
                 </div>
                 <!-- <div class="ui special cards"> -->
-                    <div class="card">
+                	<!--book card-->
+                    <div class="card book unavailable">
                         <div class="blurring dimmable image">
                             <div class="ui inverted dimmer">
                                 <div class="content">
@@ -410,8 +423,6 @@
                 $('.selection.dropdown')
                     .dropdown()
                     ;
-                
-
             </script>
 
 </body>
