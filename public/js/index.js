@@ -1,7 +1,8 @@
 // Get references to page elements
 var $exampleText = $("#example-text");
-var $email = $("#email-text");
-var $password = $("#pass-text");
+var $email = $("#email-home");
+var $emailSignUp = $("#email-signup");
+var $password = $("#password-home");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
@@ -44,19 +45,19 @@ var API = {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/examples",
+      url: "/api/examples",
       data: JSON.stringify(example)
     });
   },
   getExamples: function() {
     return $.ajax({
-      url: "api/examples",
+      url: "/api/examples",
       type: "GET"
     });
   },
   deleteExample: function(id) {
     return $.ajax({
-      url: "api/examples/" + id,
+      url: "/api/examples/" + id,
       type: "DELETE"
     });
   },
@@ -67,26 +68,32 @@ var API = {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/items",
-      data: JSON.stringify(item)
+      url: "/api/items",
+      data: item
     });
   },
   getItems: function(){
     return $.ajax({
-      url: "api/items",
+      url: "/api/items",
+      type: "GET"
+    });
+  },
+  getItem: function(id){
+    return $.ajax({
+      url: "/api/items/" + id,
       type: "GET"
     });
   },
   deleteItem: function(id){
     return $.ajax({
-      url: "api/items/" + id,
+      url: "/api/items/" + id,
       type: "DELETE"
     });
   },
   //may need to be updated to pass in object
   updateItem: function(id){
     return $.ajax({
-      url: "api/items/" + id,
+      url: "/api/items/" + id,
       type: "PUT" 
     });
   },
@@ -97,56 +104,70 @@ var API = {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/groups",
-      data: JSON.stringify(group)
+      url: "/api/groups",
+      data: group
     });
   },
   getGroup: function(){
     return $.ajax({
-      url: "api/groups",
+      url: "/api/groups",
       type: "GET"
     });
   },
   deleteGroup: function(id){
     return $.ajax({
-      url: "api/groups/" + id,
+      url: "/api/groups/" + id,
       type: "DELETE"
     });
   },
   //may need to be updated to pass in object
   updateGroup: function(id){
     return $.ajax({
-      url: "api/groups/" + id,
+      url: "/api/groups/" + id,
       type: "PUT" 
     });
   },
   //Users
   saveUser: function(user){
-    return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "POST",
-      url: "api/users",
-      data: JSON.stringify(user)
-    });
+     return $.post(
+      // headers: {
+      //   "Content-Type": "application/json"
+      // },
+      "/api/users", user, function(err, result) {
+        if (err) throw err;
+        window.location.href="/mainPage";
+      }
+    );
   },
   getUsers: function(){
     return $.ajax({
-      url: "api/users",
+      url: "/api/users",
       type: "GET"
     });
   },
+  checkCredential: function(login){
+    return $.post(
+      "/api/users/login/" + login.email, login, function(result, status) {
+        if (status !== 'success') throw status;
+        console.log(result);
+        if(result.isValid === true ){
+          window.location.href="/mainPage";
+        } else {
+          // window.location.href="/";
+        }
+        
+      });
+  },
   deleteUser: function(id){
     return $.ajax({
-      url: "api/users/" + id,
+      url: "/api/users/" + id,
       type: "DELETE"
     });
   },
   //may need to be updated to pass in object
   updateUser: function(id){
     return $.ajax({
-      url: "api/users/" + id,
+      url: "/api/users/" + id,
       type: "PUT" 
     });
   }
@@ -209,23 +230,73 @@ var handleFormSubmit = function(event) {
 var loginHandler = function(event) {
   event.preventDefault();
   
+  // alert("hello");
+
   var login = {
     email: $email.val().trim(),
     password: $password.val().trim()
   };
+  console.log("This is json stringify of login")
+  console.log(JSON.stringify(login));
 
-  if (!(login.email && login.password)) {
+  if (login.email==="" || login.password ==="") {
     alert("You must enter an email and password!");
     return;
   }
 
-  API.saveExample(example).then(function() {
-    refreshExamples();
+  API.checkCredential(login).then(function() {
+    //Run successful login or not logic
+    console.log("Ran check Crednetial Login");
   });
 
-  $exampleText.val("");
-  $exampleDescription.val("");
+  $email.val("");
+  $password.val("");
 };
+
+// New Sign up
+var signUpHandler = function(event) {
+  event.preventDefault();
+  
+  // alert("hello");
+
+  if ($("#password-signup").val().trim() !== $("#confirm-password-signup").val().trim()){
+    alert("Passwords do not match");
+    return;
+  }
+  var signup = {
+    email: $("#email-signup").val().trim(),
+    password: $("#password-signup").val().trim(),
+    firstName: $("#first-name-signup").val().trim(),
+    lastName: $("#last-name-signup").val().trim()
+  };
+  console.log("this is the json signup object");
+  console.log(JSON.stringify(signup));
+
+  if (signup.email==="" || signup.password ==="") {
+    alert("You must enter an email and password!");
+    return;
+  }
+
+
+  API.saveUser(signup).then(function(res) {
+    //Run successful login or not logic
+    // alert("ran");
+    console.log(res);
+    if(res === true){
+      console.log("Success");
+      window.location.href = "/mainPage";
+    } 
+    else console.log("failure");
+    
+  });
+
+  $("#email-signup").val("");
+  $("#password-signup").val("");
+  $("#first-name-signup").val("");
+  $("#last-name-signup").val("");
+  $("#confirm-password-signup").val("");
+};
+
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
@@ -244,5 +315,5 @@ $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
 //login and sign in buttons
-$("$login").on("click", loginHandler);
-$("$sign-up").on("click", signUpHandler);
+$(document).on("click", "#login", loginHandler);
+$("#yes-signup").on("click", signUpHandler);
