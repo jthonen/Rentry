@@ -41,7 +41,8 @@ module.exports = function(app) {
     });
 
     app.put("/api/users/:id", function(req, res) {
-        db.User.update({
+        db.User.update(
+            req.body, {
             where: {
                 id: req.params.id
             }
@@ -62,9 +63,10 @@ module.exports = function(app) {
     });
 
     // LOGIN
-    app.get("/api/users/:email", function(req, res) {
+    app.post("/api/users/login/:email", function(req, res) {
 
-        db.User.findOne({
+        db.User.findOne(
+            req.body, {
             where: {
                 email: req.params.email
             }
