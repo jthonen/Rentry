@@ -24,24 +24,28 @@ module.exports = function(app) {
     });
 
     app.post("/api/users", function(req, res) {
-        pw.hash(req.password, function(err, hash){
+        console.log("entered api/users post", req.body);
+
+        pw.hash(req.body.password, function(err, hash){
             if(err) {throw err;}
             var user= {
-                firstName: req.firstName,
-                lastName: req.lastName,
-                password: hash,
-                email: req.email
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                passHash: hash,
+                email: req.body.email
             };
+            console.log("this is the HASHHHHH ", hash);
 
             db.User.create(user).then(function(user) {
-            res.json(user);
+            res.json(true);
             });
         })
         
     });
 
     app.put("/api/users/:id", function(req, res) {
-        db.User.update({
+        db.User.update(
+            req.body, {
             where: {
                 id: req.params.id
             }
@@ -62,21 +66,23 @@ module.exports = function(app) {
     });
 
     // LOGIN
-    app.get("/api/users/:email", function(req, res) {
+    app.post("/api/users/login/:email", function(req, res) {
 
+        // console.log(req)
         db.User.findOne({
             where: {
-                email: req.params.email
+                email: req.body.email
             }
         }).then(function(user) {
-            pw.verify(user.passHash, req.ps, function(err, isValid) {
+            console.log("\nUSERRRRR\n", user, " \n");
+            pw.verify(user.dataValues.passHash, req.body.password, function(err, isValid) {
                 if(err) {
                     throw err;
                 }
                 msg = isValid ? 'Passwords match!' : 'Wrong password';
-                console.log(msg);
-
-                res.json(isValid);
+                // var isValid = isValid ? true : false;
+                // console.log(msg);
+                res.json({ isValid });
             });
         });
     });

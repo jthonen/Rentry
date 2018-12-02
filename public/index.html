@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SharePac</title>
+    <!-- Link to the jQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./styles/style.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
 </head>
 
@@ -17,16 +20,16 @@
         <img class="one" src="./images/stock_group.jpeg">
 
         <div class="two">
-            <h1 class="ui header">Welcome to SharePac</h1>
-            <h3 class="ui header">Join a group. Start Sharing.</h3>
-            <form class="ui large form">
+            <h1 class="ui header welcome">Welcome to SharePac</h1>
+            <h3 class="ui header statement">Join a group. Start Sharing.</h3>
+            <form class="ui large form form-input">
                 <div class="field">
                     <label>Email</label>
-                    <input type="text" name="email" placeholder="Email">
+                    <input type="email" id="email-home" name="email" placeholder="Email">
                 </div>
                 <div class="field">
                     <label>Password</label>
-                    <input type="text" name="password" placeholder="Password">
+                    <input type="password" id="password-home" name="password" placeholder="Password">
                 </div>
                 <!-- <div class="field">
                     <div class="ui checkbox">
@@ -34,12 +37,13 @@
                     <label>I agree to the Terms and Conditions</label>
                     </div>
                 </div> -->
-                    <button class="ui button" id="login" type="submit">Login</button>
-                    <button class="ui button" id="sign-up" type="submit">Sign Up</button>
+                    <button class="ui button" id="login" type="button">Login</button>
+                    <a href="./signup.html"><button class="ui button" id="sign-up" type="button">Sign Up</button></a>
             </form>
         </div>
 
     </div>
-    
+
+    <script type="text/javascript" src="./js/index.js"></script>
 </body>
 </html>
