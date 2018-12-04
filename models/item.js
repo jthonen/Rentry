@@ -11,14 +11,22 @@ module.exports = function(sequelize, DataTypes) {
     pic: {
       type: DataTypes.STRING
     },
+    quantity: {
+      type: DataTypes.INTEGER
+    },
+    category: {
+      type: DataTypes.STRING
+    },
     description: {
       type: DataTypes.STRING
     },
     currentUserID: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      defaultValue: null
     },
     available: {
-      type: DataTypes.BOOLEAN
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
     }
   });
   

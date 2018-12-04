@@ -46,7 +46,7 @@ var API = {
       },
       type: "POST",
       url: "/api/examples",
-      data: JSON.stringify(example)
+      data: example
     });
   },
   getExamples: function() {
@@ -62,34 +62,34 @@ var API = {
     });
   },
   //Items
-  saveItem: function(item){
-    return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "POST",
-      url: "/api/items",
-      data: item
-    });
-  },
-  getItems: function(){
-    return $.ajax({
-      url: "/api/items",
-      type: "GET"
-    });
-  },
-  getItem: function(id){
-    return $.ajax({
-      url: "/api/items/" + id,
-      type: "GET"
-    });
-  },
-  deleteItem: function(id){
-    return $.ajax({
-      url: "/api/items/" + id,
-      type: "DELETE"
-    });
-  },
+  // saveItem: function(item){
+  //   return $.ajax({
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //     type: "POST",
+  //     url: "/api/items",
+  //     data: item
+  //   });
+  // },
+  // getItems: function(){
+  //   return $.ajax({
+  //     url: "/api/items",
+  //     type: "GET"
+  //   });
+  // },
+  // getItem: function(id){
+  //   return $.ajax({
+  //     url: "/api/items/" + id,
+  //     type: "GET"
+  //   });
+  // },
+  // deleteItem: function(id){
+  //   return $.ajax({
+  //     url: "/api/items/" + id,
+  //     type: "DELETE"
+  //   });
+  // },
   //may need to be updated to pass in object
   updateItem: function(id){
     return $.ajax({

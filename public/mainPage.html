@@ -60,10 +60,8 @@
     <div class="ui huge centered header">Group Name</div>
     <br>
     <!--Start Semantic Grid-->
-    <!-- <div class="ui relaxed grid"> -->
     <div class="ui stackable special centered cards">
-        <!-- <div class="ui special cards"> -->
-        <!--tool card-->
+        tool card
         <div class="card tool available">
             <div class="blurring dimmable image">
                 <div class="ui inverted dimmer">
@@ -87,7 +85,6 @@
                 <a class="header">Borrow it!</a>
             </div>
         </div>
-        <!-- <div class="ui special cards"> -->
         <!--book card-->
         <div class="card book unavailable">
             <div class="blurring dimmable image">
@@ -115,8 +112,6 @@
                 <a class="header">Get on the Wait List</a>
             </div>
         </div>
-        <!-- </div> -->
-        <!-- <div class="ui special cards"> -->
         <!--tool card-->
         <div class="card tool available">
             <div class="blurring dimmable image">
@@ -141,7 +136,6 @@
                 <a class="header">Borrow it!</a>
             </div>
         </div>
-        <!-- <div class="ui special cards"> -->
         <!--book card-->
         <div class="card book unavailable">
             <div class="blurring dimmable image">
@@ -169,8 +163,6 @@
                 <a class="header">Get on the Wait List</a>
             </div>
         </div>
-        <!-- </div> -->
-        <!-- <div class="ui special cards"> -->
         <!--clothing card-->
         <div class="card clothing available">
             <div class="blurring dimmable image">
@@ -195,7 +187,6 @@
                 <a class="header">Borrow it!</a>
             </div>
         </div>
-        <!-- <div class="ui special cards"> -->
         <!--book card-->
         <div class="card book unavailable">
             <div class="blurring dimmable image">
@@ -228,8 +219,6 @@
                 <a class="header">Get on the Wait List</a>
             </div>
         </div>
-        <!-- </div> -->
-    </div>
     </div>
 
     <!--End Semantic Grid-->
@@ -366,39 +355,40 @@
                         <form class="ui form">
                                 <div class="field">
                                     <label>Item Name</label>
-                                    <input placeholder="Super cool stuff">
+                                    <input placeholder="Super cool stuff" id="item-name">
                                 </div>
                                 <div class="field">
                                     <label>Quantity</label>
-                                    <div class="ui selection dropdown">
-                                        <input type="hidden" name="quantity">
-                                        <i class="dropdown icon"></i>
-                                        <div class="default text">1</div>
-                                        <div class="menu">
-                                            <div class="item" data-value="4">1</div>
-                                            <div class="item" data-value="3">2</div>
-                                            <div class="item" data-value="2">3</div>
-                                            <div class="item" data-value="1">4</div>
-                                            <div class="item" data-value="0">5</div>
-                                        </div>
-                                    </div>
+                                    <select class="ui dropdown quantity">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option cvalue="9">9</option>
+                                    </select>
                                 </div>
                                 <div class="field">
                                     <label>Category</label>
-                                    <div class="ui selection dropdown">
-                                        <input type="hidden" name="Category">
-                                        <i class="dropdown icon"></i>
-                                        <div class="default text">Tools</div>
-                                        <div class="menu">
-                                            <div class="item" data-value="2">Books</div>
-                                            <div class="item" data-value="1">Tools</div>
-                                            <div class="item" data-value="0">Clothing</div>
-                                        </div>
-                                    </div>
+                                        <select class="ui dropdown category">
+                                            <option value="kitchen">Kitchen</option>
+                                            <option value="living">Living Room</option>
+                                            <option value="bathroom">Bathroom</option>
+                                            <option value="dining">Dining Room</option>
+                                            <option value="bedroom">Bedroom</option>
+                                            <option value="office">Office</option>
+                                            <option value="yard">Yard</option>
+                                            <option value="laundry">Laundry Room</option>
+                                            <option value="garage">Garage</option>
+                                            <option value="others">Others</option>
+                                        </select>
                                 </div>
                                 <div class="field">
                                     <label>Description</label>
-                                    <textarea rows="2"></textarea>
+                                    <textarea rows="2" id="description"></textarea>
                                 </div>
                                 <div class="field">
                                     <label>
@@ -415,7 +405,7 @@
                     I Don't Wanna Share
                 </div>
                 <!--wait-list button-->
-                <div class="ui positive labeled icon button">
+                <div class="ui positive labeled icon button" id="share-button">
                     Share Item!
                     <i class="checkmark icon"></i>
                 </div>
@@ -427,16 +417,16 @@
             crossorigin="anonymous"></script>
 
         <script>
-            // Semantic Hover on Card
-            $('.special.cards .image').dimmer({
-                on: 'hover'
-            });
-            //Semantic activate popup (learn more btn)
-            $(".learn-more").on("click", function () {
-                $('.popup-avail')
-                    .modal('show')
-                    ;
-            });
+            // // Semantic Hover on Card
+            // $('.special.cards .image').dimmer({
+            //     on: 'hover'
+            // });
+            // //Semantic activate popup (learn more btn)
+            // $(".learn-more").on("click", function () {
+            //     $('.popup-avail')
+            //         .modal('show')
+            //         ;
+            // });
             //Semantic activate popup (.popup-unavail leanr more btn)
             $(".learn-more-taken").on("click", function () {
                 $('.popup-unavail')
@@ -472,6 +462,8 @@
                 .dropdown()
                 ;
         </script>
+
+        <script type="text/javascript" src="./js/item.js"></script>
 
 </body>
 
