@@ -38,7 +38,8 @@ $(document).ready(function() {
                                 <div class="content">
                                     <div class="center">
                                         <div class="ui primary button learn-more" data-name="${result[i].name}" data-description="${result[i].description}"
-                                            data-quantity="${result[i].quantity}" data-category="${result[i].category}" data-currentUser="${currentUser}"}>Details</div>
+                                            data-quantity="${result[i].quantity}" data-category="${result[i].category}" data-currentUser="${currentUser}"
+                                            data-image="${result[i].pic}"}>Details</div>
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +74,7 @@ $(document).ready(function() {
                     </div>
                     <div class="image content">
                         <div class="ui medium image product-img">
-                            <img src="../images/unavailable.png"
+                            <img src="${$(this).data("image")}"
                                 alt="product image">
                         </div>
                         <div class="description">
