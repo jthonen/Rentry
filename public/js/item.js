@@ -11,7 +11,8 @@ $(document).ready(function() {
             name: $("#item-name").val().trim(),
             quantity: $(".ui.dropdown.quantity").val().trim(),
             category: $(".ui.dropdown.category").val().trim(),
-            description: $("#description").val().trim()
+            description: $("#description").val().trim(),
+            ownerID: localStorage.userID
         };
     
         console.log(item);

@@ -37,7 +37,8 @@ module.exports = function(app) {
             console.log("this is the HASHHHHH ", hash);
 
             db.User.create(user).then(function(user) {
-            res.json(true);
+                localStorage.userID = user.id;
+                res.json(true);
             });
         })
         
@@ -75,14 +76,18 @@ module.exports = function(app) {
             }
         }).then(function(user) {
             console.log("\nUSERRRRR\n", user, " \n");
+            
             pw.verify(user.dataValues.passHash, req.body.password, function(err, isValid) {
                 if(err) {
                     throw err;
                 }
+                // if (isValid) window.localStorage.userID = user.id;
                 msg = isValid ? 'Passwords match!' : 'Wrong password';
                 // var isValid = isValid ? true : false;
                 // console.log(msg);
-                res.json({ isValid });
+                res.json({ 
+                    isValid: isValid, 
+                    userID: user.id });
             });
         });
     });

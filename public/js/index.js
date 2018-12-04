@@ -151,7 +151,10 @@ var API = {
         if (status !== 'success') throw status;
         console.log(result);
         if(result.isValid === true ){
+          localStorage.email = login.email;
+          localStorage.userID = result.userID;
           window.location.href="/mainPage";
+          console.log("after new location", localStorage.email);
         } else {
           alert("Your email or password does not match.");
         }
@@ -236,8 +239,8 @@ var loginHandler = function(event) {
     email: $email.val().trim(),
     password: $password.val().trim()
   };
-  console.log("This is json stringify of login")
-  console.log(JSON.stringify(login));
+  // console.log("This is json stringify of login")
+  // console.log(JSON.stringify(login));
 
   if (login.email==="" || login.password ==="") {
     alert("You must enter an email and password!");
