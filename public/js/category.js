@@ -39,7 +39,7 @@ $(document).ready(function() {
                                     <div class="center">
                                         <div class="ui primary button learn-more" data-name="${result[i].name}" data-description="${result[i].description}"
                                             data-quantity="${result[i].quantity}" data-category="${result[i].category}" data-currentUser="${currentUser}"
-                                            data-image="${result[i].pic}"}>Details</div>
+                                            data-image="${result[i].pic}" data-id="${result[i].id}">Details</div>
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@ $(document).ready(function() {
             $(document).on("click", ".learn-more", function (event) {
                 event.preventDefault();
 
-                console.log($(this));
+                // console.log($(this));
 
                 $(".ui.modal.popup-avail").html(`
                     <i class="close icon"></i>
@@ -94,14 +94,31 @@ $(document).ready(function() {
                         <div class="ui black deny button">
                             Cancel
                         </div>
-                        <div class="ui positive right labeled icon button">
+                        <div class="ui positive borrowItem right labeled icon button" data-id=${$(this).data("id")}>
                             Borrow it!
                             <i class="checkmark icon"></i>
                         </div>
                     </div>
             `)
                 $('.popup-avail').modal('show');
+                $(document).on("click", ".borrowItem", function(event){
+                    //borrow item
+                    var itemID = $(this).attr("data-id");
+                    var item = {
+                        currentUserID: localStorage.userID,
+                        available: false
+                    };
+                    $.ajax({
+                        url: "/api/items/" + itemID,
+                        type: "PUT",
+                        data: item
+                     }).then(function(result){
+                        //  console.log(result);
+                        //  $(".currentUser").text("Current User: " + result.firstName);
+                     });
+                });
             });
         });
-    })
+    });
+    
 });

@@ -15,8 +15,8 @@ module.exports = function(app) {
       }
     }).then(function(result) {
       res.json(result);
-    })
-  })
+    });
+  });
 
   // Create a new example
   app.post("/api/items", function(req, res) {
@@ -25,7 +25,7 @@ module.exports = function(app) {
     });
   });
 
-  app.put("/api/items/:id", function(req,res) {
+  app.put("/api/items/:id", function(req, res) {
     db.Item.update(
       req.body, {
         where: {
