@@ -13,6 +13,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
+    <style>
+      .move-img {
+          padding-right: 15px;
+      }
+    </style>
 </head>
 
 <body>
@@ -61,7 +66,7 @@
     <br>
     <!--Start Semantic Grid-->
     <div class="ui stackable special centered cards">
-        tool card
+        <!--tool card -->
         <div class="card tool available">
             <div class="blurring dimmable image">
                 <div class="ui inverted dimmer">
@@ -189,9 +194,14 @@
         </div>
         <div class="image content">
             <!--product-img div-->
-            <div class="ui medium image product-img">
-                <img src="https://images-na.ssl-images-amazon.com/images/I/51OORp1XD1L._SX258_BO1,204,203,200_.jpg" alt="product image">
-            </div>
+              <div class="ui move up reveal">
+                <div class="visible content">
+                  <img src="https://imgc.allpostersimages.com/img/print/posters/harry-potter-and-the-goblet-of-fire-book-art-cover_a-G-14637369-0.jpg" class="ui image move-img">
+                </div>
+                <div class="hidden content">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-b5v5nZEdiH5DzKcMitFCz0BmpFbp51M2OlWrwkKE-rAX48Wn" class="ui image move-img">
+                </div>
+              </div>
             <div class="description">
                 <div class="ui header">Description</div>
                 <!--Description div-->
@@ -285,7 +295,7 @@
                                     <option value="6">6</option>
                                     <option value="7">7</option>
                                     <option value="8">8</option>
-                                    <option cvalue="9">9</option>
+                                    <option value="9">9</option>
                             </select>
                         </div>
                         <div class="field">
