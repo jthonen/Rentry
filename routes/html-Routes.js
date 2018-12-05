@@ -11,6 +11,7 @@ module.exports = function(app) {
   });
 
   app.get("/", function(req, res) {
+    console.log("hit");
     res.sendFile(path.join(__dirname, "../public/index.html"));
   });
 };
