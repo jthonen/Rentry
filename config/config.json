@@ -4,16 +4,12 @@
     "password": "root",
     "database": "sharePac",
     "host": "localhost",
+    "username": "x2hdv0ijj2qjv08c",
+    "password": "zokp06foim6gc3mr",
+    "database": "nlw4q02zgyzevyoc",
+    "host": "vhw3t8e71xdz9k14.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "port": 3306,
     "dialect": "mysql"
-  },
-  "test": {
-    "username": "root",
-    "password": null,
-    "database": "sharePac",
-    "host": "localhost",
-    "dialect": "mysql",
-    "logging": false
   },
   "production": {
     "use_env_variable": "JAWSDB_URL",
