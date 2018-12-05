@@ -94,7 +94,7 @@ $(document).ready(function() {
                         <div class="ui black deny button">
                             Cancel
                         </div>
-                        <div class="ui positive right labeled icon button">
+                        <div class="ui positive borrowItem right labeled icon button">
                             Borrow it!
                             <i class="checkmark icon"></i>
                         </div>
@@ -103,5 +103,9 @@ $(document).ready(function() {
                 $('.popup-avail').modal('show');
             });
         });
+    })
+    $(".borrowItem").on("click", function(event){
+        //borrow item
+        alert("borrow here");
     })
 });
