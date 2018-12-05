@@ -12,7 +12,8 @@ $(document).ready(function() {
             quantity: $(".ui.dropdown.quantity").val().trim(),
             category: $(".ui.dropdown.category").val().trim(),
             description: $("#description").val().trim(),
-            ownerID: localStorage.userID
+            ownerID: localStorage.userID,
+            imageLink: $("#image-link").val()
         };
     
         console.log(item);

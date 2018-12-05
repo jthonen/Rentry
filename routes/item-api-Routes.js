@@ -8,10 +8,10 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/items/:id", function(req, res) {
+  app.get("/api/items/:name", function(req, res) {
     db.Item.findOne({
       where: {
-        id: req.params.id
+        name: req.params.name
       }
     }).then(function(result) {
       res.json(result);

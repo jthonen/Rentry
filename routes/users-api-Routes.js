@@ -37,7 +37,7 @@ module.exports = function(app) {
             console.log("this is the HASHHHHH ", hash);
 
             db.User.create(user).then(function(user) {
-                localStorage.userID = user.id;
+                // localStorage.userID = user.id;
                 res.json(true);
             });
         })
