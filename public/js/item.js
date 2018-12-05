@@ -12,7 +12,9 @@ $(document).ready(function() {
             quantity: $(".ui.dropdown.quantity").val().trim(),
             category: $(".ui.dropdown.category").val().trim(),
             description: $("#description").val().trim(),
-            ownerID: localStorage.userID
+            ownerID: localStorage.userID,
+            userID: localStorage.userID,
+            currentUserID: localStorage.userID
         };
     
         console.log(item);
@@ -35,7 +37,7 @@ $(document).ready(function() {
             url: "/api/items",
             type: "GET"
         }).then(function(data) {
-            console.log(data);
+            // console.log(data);
             for(var i = 0; i < data.length; i++) {
                 if(data[i].available === true) {
                     $(".ui.stackable.special.centered.cards").append(`

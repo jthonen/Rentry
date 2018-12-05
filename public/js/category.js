@@ -65,7 +65,7 @@ $(document).ready(function() {
             $(document).on("click", ".learn-more", function (event) {
                 event.preventDefault();
 
-                console.log($(this));
+                // console.log($(this));
 
                 $(".ui.modal.popup-avail").html(`
                     <i class="close icon"></i>
