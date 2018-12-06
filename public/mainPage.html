@@ -19,15 +19,15 @@
 
     <!--Navbar-->
     <div class="ui huge menu">
-        <div class="header item">
-            <img class="logo" src="https://github.com/jthonen/Rentry/blob/master/public/images/sharePac(head).png?raw=true"
-                alt="company logo">
-        </div>
         <a class="item">
+            <div class="item">
+                <img class="logo" src="https://github.com/jthonen/Rentry/blob/master/public/images/sharePac(head).png?raw=true"
+                    alt="company logo">
+            </div>
             <!--add-item button-->
             <div class="ui primary basic button add-item">Add Item</div>
         </a>
-        <a>
+        <a class="item">
             <div class="ui category search">
                 <div class="ui icon input">
                   <input class="prompt" type="text" placeholder="Search Items...">
@@ -35,7 +35,8 @@
                 </div>
             </div>
         </a>
-        <div class="right menu">
+    <div class="right menu">
+        <a class="item">
             <div class="field">
                 <button class="small ui yellow button" id="searchCategory">Sort by Category</button>
                 <select class="ui selection dropdown" id="category">
@@ -53,10 +54,11 @@
                     <option class="item available-select" value="others">Others</option>
                 </select>
             </div>
-            <a class="header item logout-button" href="index.html">
-                <!--logout button-->
-                <div class="ui primary basic negative button" id="logout">Logout</div>
-            </a>
+        </a>
+        <!--logout button-->
+        <a class="header item logout-button" href="index.html">
+            <div class="ui primary basic negative button" id="logout">Logout</div>
+        </a>
         </div>
     </div>
     <!--Navbar End-->
