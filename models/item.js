@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     currentUserID: {
       type: DataTypes.INTEGER,
-      defaultValue: null
+      defaultValue: 0
     },
     available: {
       type: DataTypes.BOOLEAN,

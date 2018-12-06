@@ -6,11 +6,20 @@ $(document).ready(function() {
 
         var available = "";
         var currentUser = "";
+
+        if(category === "borrowed") {
+            var cookie = document.cookie;
+            var splitCookie = cookie.split("=");
+            var category = splitCookie[1];
+        };
         
         $.ajax({
             url: "/api/category/" + category,
             type: "GET"
         }).then(function(result) {
+
+            console.log("\nresult here: \n", result);
+
             $(".ui.stackable.special.centered.cards").empty();
 
             for(i = 0; i < result.length; i++) {
@@ -23,13 +32,16 @@ $(document).ready(function() {
                     available = " Not available";
                 }
 
+                console.log(result[i].currentUserID);
                 // check current user
-                if(result[i].currentUserID === null ) {
+                if(result[i].currentUserID === 0 ) {
                     currentUser = " No one has borrowed it";
                 }
                 else {
                     currentUser = result[i].currentUserID;
                 }
+                console.log(currentUser);
+                console.log(result[i].available);
 
                 $(".ui.stackable.special.centered.cards").append(`
                     <div class="card">
@@ -37,9 +49,9 @@ $(document).ready(function() {
                             <div class="ui inverted dimmer">
                                 <div class="content">
                                     <div class="center">
-                                        <div class="ui primary button learn-more" data-name="${result[i].name}" data-description="${result[i].description}"
-                                            data-quantity="${result[i].quantity}" data-category="${result[i].category}" data-currentUser="${currentUser}"
-                                            data-image="${result[i].pic}" data-id="${result[i].id}">Details</div>
+                                        <div class="ui primary button learn-more" data-id="${result[i].id}" data-name="${result[i].name}" data-description="${result[i].description}"
+                                            data-quantity="${result[i].quantity}" data-category="${result[i].category}" data-currentuser="${currentUser}"
+                                            data-image="${result[i].pic}" data-available="${result[i].available}"}>Details</div>
                                     </div>
                                 </div>
                             </div>
@@ -86,38 +98,79 @@ $(document).ready(function() {
                             <!--category div-->
                             <div class="ui header categories">Category: ${$(this).data("category")}</div>
                             <!--current-user div-->
-                            <h3 class="current-user">Current User: ${$(this).data("currentUser")}</h3>
+                            <h3 class="current-user">Current User: ${$(this).data("currentuser")}</h3>
                         </div>
                     </div>
                     <!--borrow or deny buttons-->
                     <div class="actions">
                         <div class="ui black deny button">
                             Cancel
-                        </div>
-                        <div class="ui positive borrowItem right labeled icon button" data-id=${$(this).data("id")}>
-                            Borrow it!
-                            <i class="checkmark icon"></i>
+                        </div><br><br>
+                        <div class="interchangeable">
+                            <div class="ui positive right labeled icon button borrowItem" data-id="${$(this).data("id")}">
+                                Borrow it!
+                                <i class="checkmark icon"></i>
+                            </div>
                         </div>
                     </div>
-            `)
+                `);
+                
+                // console.log($(this).data("available"));
+                if($(this).data("available") === false) {
+                    $(".interchangeable").html(`
+                        <div class="ui positive right labeled icon button returnItem" data-id="${$(this).data("id")}">
+                            Return This Item
+                            <i class="checkmark icon"></i>
+                        </div>
+                    `);
+                }
                 $('.popup-avail').modal('show');
-                $(document).on("click", ".borrowItem", function(event){
-                    //borrow item
-                    var itemID = $(this).attr("data-id");
-                    var item = {
-                        currentUserID: localStorage.userID,
-                        available: false
-                    };
-                    $.ajax({
-                        url: "/api/items/" + itemID,
-                        type: "PUT",
-                        data: item
-                     }).then(function(result){
+            });
+
+            $(document).on("click", ".borrowItem", function(event){
+                //borrow item
+
+                var cookie = document.cookie;
+                // console.log(cookie);
+                var splitCookie = cookie.split("=");
+                // console.log(splitCookie);
+                var uid = splitCookie[1];
+                // console.log("user id is: " + uid);
+
+                var itemID = $(this).data("id");
+                var item = {
+                    currentUserID: uid,
+                    available: false
+                };
+                $.ajax({
+                    url: "/api/items/" + itemID,
+                    type: "PUT",
+                    data: item
+                    }).then(function(result){
                         //  console.log(result);
                         //  $(".currentUser").text("Current User: " + result.firstName);
-                     });
-                });
+                        location.reload();
+                        alert("Successfully claimed the item! Please contact the owner.");
+                    });
             });
+
+            $(document).on("click", ".returnItem", function(event) {
+                event.preventDefault();
+
+                var itemID = $(this).data("id");
+                var item = {
+                    currentUserID: 0,
+                    available: true
+                };
+                $.ajax({
+                    url: "/api/items/" + itemID,
+                    type: "PUT",
+                    data: item
+                }).then(function(result) {
+                    location.reload();
+                    alert("Successfully returned the item. Please contact the owner.");
+                })
+            })
         });
     });
     

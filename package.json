@@ -14,8 +14,9 @@
     "credential": "^2.0.0",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
-    "mysql": "^2.16.0",
+    "morgan": "^1.9.1",
     "mysql2": "^1.6.4",
+    "passport": "^0.4.0",
     "sequelize": "^4.41.2"
   },
   "devDependencies": {
@@ -26,18 +27,5 @@
     "eslint-plugin-prettier": "^2.7.0",
     "mocha": "^5.2.0",
     "prettier": "^1.15.2"
-  },
-  "directories": {
-    "test": "test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jthonen/Rentry.git"
-  },
-  "keywords": [],
-  "author": "",
-  "bugs": {
-    "url": "https://github.com/jthonen/Rentry/issues"
-  },
-  "homepage": "https://github.com/jthonen/Rentry#readme"
+  }
 }

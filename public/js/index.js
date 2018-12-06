@@ -108,9 +108,9 @@ var API = {
       data: group
     });
   },
-  getGroup: function(){
+  getGroup: function(code){
     return $.ajax({
-      url: "/api/groups",
+      url: "/api/groups/" + code,
       type: "GET"
     });
   },
@@ -133,8 +133,9 @@ var API = {
       // headers: {
       //   "Content-Type": "application/json"
       // },
-      "/api/users", user, function(err, result) {
-        if (err) throw err;
+      "/api/users", user, function(result) {
+        // localStorage.userID = result.id;
+        // console.log(result);
         window.location.href="/mainPage";
       }
     );
@@ -153,8 +154,6 @@ var API = {
         if(result.isValid === true ){
           setCookie(result.userID);
           console.log("this is cookie: ", document.cookie);
-          localStorage.email = login.email;
-          localStorage.userID = result.userID;
           window.location.href="/mainPage";
           console.log("after new location", localStorage.email);
         } else {
@@ -268,17 +267,28 @@ var loginHandler = function(event) {
 var signUpHandler = function(event) {
   event.preventDefault();
   
-  // alert("hello");
+  if($(".sign-up-empty-div").is(":empty")) {
+    alert("Please enter the invitation code if applicable, else start a new group.");
+  };
 
   if ($("#password-signup").val().trim() !== $("#confirm-password-signup").val().trim()){
     alert("Passwords do not match");
     return;
-  }
+  };
+
+  if($("#invitation-code") !== null) {
+    var inviCode = $("#invitation-code").val().trim();
+    console.log(inviCode);
+
+    API.getGroup(inviCode);
+  }  
+
   var signup = {
     email: $("#email-signup").val().trim(),
     password: $("#password-signup").val().trim(),
     firstName: $("#first-name-signup").val().trim(),
-    lastName: $("#last-name-signup").val().trim()
+    lastName: $("#last-name-signup").val().trim(),
+    GroupId: inviCode  // this is not really correct, I need to create a group (need another group-creating calling function), and then assign the group id here
   };
   console.log("this is the json signup object");
   console.log(JSON.stringify(signup));
@@ -292,7 +302,7 @@ var signUpHandler = function(event) {
   API.saveUser(signup).then(function(res) {
     //Run successful login or not logic
     // alert("ran");
-    console.log(res);
+    // console.log(res);
     if(res === true){
       console.log("Success");
       window.location.href = "/mainPage";
@@ -329,6 +339,30 @@ $exampleList.on("click", ".delete", handleDeleteBtnClick);
 $(document).on("click", "#login", loginHandler);
 $("#yes-signup").on("click", signUpHandler);
 
+// creating group
+$("#createGroup-btn").on("click", function(event) {
+  event.preventDefault();
+
+  $(".sign-up-empty-div").html(`
+    <div class="field">
+      <label>Group Name</label>
+      <input type="text" id="group-name">
+    </div>
+  `)
+});
+
+// invitation code
+$("#invited-btn").on("click", function(event) {
+  event.preventDefault();
+
+  $(".sign-up-empty-div").html(`
+    <div class="field">
+      <label>Invitation Code</label>
+      <input type="text" id="invitation-code">
+    </div>
+  `)
+});
+
 // set cookies
 function setCookie(currUID) {
   var d = new Date();
@@ -337,4 +371,4 @@ function setCookie(currUID) {
   var expires = "expires="+ d.toUTCString();
   document.cookie = userID + "=" + currUID + ";" + expires + "; path=/";
   console.log(document.cookie);
- };
+};
