@@ -332,9 +332,9 @@ $("#yes-signup").on("click", signUpHandler);
 // set cookies
 function setCookie(currUID) {
   var d = new Date();
-  var userID = “userID”;
+  var userID = "userID";
   d.setTime(d.getTime() + 60*60*1000);
-  var expires = “expires=“+ d.toUTCString();
-  document.cookie = userID + “=” + currUID + “;” + expires + “; path=/“;
+  var expires = "expires="+ d.toUTCString();
+  document.cookie = userID + "=" + currUID + ";" + expires + "; path=/";
   console.log(document.cookie);
  };
