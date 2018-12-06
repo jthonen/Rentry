@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "ed9sz9ju7q13kis8",
-    "password": "nwxccsc6dcvxa5rd",
-    "database": "mpf1r3s10hdxskak",
-    "host": "ffn96u87j5ogvehy.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "username": "root",
+    "password": "root",
+    "database": "sharePac",
+    "host": "localhost",
     "port": 3306,
     "dialect": "mysql"
   },
