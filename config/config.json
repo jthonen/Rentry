@@ -1,5 +1,9 @@
 {
   "development": {
+    "username": "root",
+    "password": "root",
+    "database": "sharePac",
+    "host": "localhost",
     "username": "x2hdv0ijj2qjv08c",
     "password": "zokp06foim6gc3mr",
     "database": "nlw4q02zgyzevyoc",

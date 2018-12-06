@@ -43,7 +43,7 @@ $(document).ready(function() {
                                     </div>
                                 </div>
                             </div>
-                        <img src="../images/unavailable.png">
+                        <img src="${result[i].pic}">
                         </div>
                     <div class="content">
                         <a class="header">${result[i].name}</a>

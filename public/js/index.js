@@ -178,6 +178,12 @@ var API = {
   }
 };
 
+//logout and delete cookies  (not sure working)        -------------------------------------------
+$("#logout").on("click", function() {
+  document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  console.log("logged out and cookies deleted");
+}); 
+
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function() {
   API.getExamples().then(function(data) {

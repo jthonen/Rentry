@@ -12,6 +12,7 @@ $(document).ready(function() {
             quantity: $(".ui.dropdown.quantity").val().trim(),
             category: $(".ui.dropdown.category").val().trim(),
             description: $("#description").val().trim(),
+            pic: $("#item-img").val().trim(),
             ownerID: localStorage.userID,
             userID: localStorage.userID,
             currentUserID: localStorage.userID
@@ -54,7 +55,7 @@ $(document).ready(function() {
                                     <div class="ui green ribbon label">
                                         <i class="thumbs up outline icon"></i> Available
                                     </div>
-                                    <img src="https://images-na.ssl-images-amazon.com/images/I/613BCaoaS6L._UX385_.jpg">
+                                    <img src="${data[i].pic}">
                                 </div>
                             </div>
                             <div class="content available">
