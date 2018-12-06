@@ -18,7 +18,7 @@
 <body>
 
     <!--Navbar-->
-    <div class="ui menu">
+    <div class="ui huge menu">
         <div class="header item">
             <img class="logo" src="https://github.com/jthonen/Rentry/blob/master/public/images/sharePac(head).png?raw=true"
                 alt="company logo">
@@ -44,16 +44,16 @@
                     <option class="item available-select" value="others">Others</option>
                 </select>
             </div>
-            <a class="header item">
-                User Name
+            <a class="header item logout-button" href="index.html">
+                <!--logout button-->
+                <div class="ui primary basic negative button" id="logout">Logout</div>
             </a>
         </div>
     </div>
     <!--Navbar End-->
 
-    <!--Group name-->
-
-    <div class="ui huge centered header">Group Name</div>
+    <br>
+    <br>
     <br>
 
     <!-- empty div for modal -->
@@ -188,16 +188,6 @@
         </div>
         <div class="image content"> -->
             <!--product-img div-->
-              <div class="ui move up reveal">
-                <div class="visible content">
-                  <img src="https://imgc.allpostersimages.com/img/print/posters/harry-potter-and-the-goblet-of-fire-book-art-cover_a-G-14637369-0.jpg" class="ui image move-img">
-                </div>
-                <div class="hidden content">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-b5v5nZEdiH5DzKcMitFCz0BmpFbp51M2OlWrwkKE-rAX48Wn" class="ui image move-img">
-                </div>
-              </div>
-            <div class="description">
-                <div class="ui header">Description</div> -->
                 <!--Description div-->
                 <!-- <p class="description">There's wizards and magic and stuff. There's also a game kids play on
                     broomsticks with a snitch. I love that shit. Enjoy.</p> -->
@@ -312,9 +302,10 @@
                             <textarea rows="2" id="description"></textarea>
                         </div>
                         <div class="field">
-                            <label>
-                                Upload Image <i class="upload icon"></i>
-                            </label>
+                                <div class="field">
+                                        <label>Item Image URL</label>
+                                        <input placeholder="Paste URL here" id="item-img">
+                                </div>
                         </div>
                     </form>
                 </div>
