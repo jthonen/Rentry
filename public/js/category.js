@@ -55,7 +55,7 @@ $(document).ready(function() {
                                     </div>
                                 </div>
                             </div>
-                        <img src="../images/unavailable.png">
+                        <img src="${result[i].pic}">
                         </div>
                     <div class="content">
                         <a class="header">${result[i].name}</a>
@@ -77,7 +77,7 @@ $(document).ready(function() {
             $(document).on("click", ".learn-more", function (event) {
                 event.preventDefault();
 
-                console.log($(this));
+                // console.log($(this));
 
                 $(".ui.modal.popup-avail").html(`
                     <i class="close icon"></i>
@@ -172,5 +172,6 @@ $(document).ready(function() {
                 })
             })
         });
-    })
+    });
+    
 });

@@ -134,8 +134,8 @@ var API = {
       //   "Content-Type": "application/json"
       // },
       "/api/users", user, function(result) {
-        localStorage.userID = result.id;
-        console.log(result);
+        // localStorage.userID = result.id;
+        // console.log(result);
         window.location.href="/mainPage";
       }
     );
@@ -176,6 +176,12 @@ var API = {
     });
   }
 };
+
+//logout and delete cookies  (not sure working)        -------------------------------------------
+$("#logout").on("click", function() {
+  document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  console.log("logged out and cookies deleted");
+}); 
 
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function() {
@@ -282,7 +288,7 @@ var signUpHandler = function(event) {
     password: $("#password-signup").val().trim(),
     firstName: $("#first-name-signup").val().trim(),
     lastName: $("#last-name-signup").val().trim(),
-    GroupId: $("#group-name").val().trim()  // this is not really correct, I need to create a group (need another group-creating calling function), and then assign the group id here
+    GroupId: inviCode  // this is not really correct, I need to create a group (need another group-creating calling function), and then assign the group id here
   };
   console.log("this is the json signup object");
   console.log(JSON.stringify(signup));
@@ -296,7 +302,7 @@ var signUpHandler = function(event) {
   API.saveUser(signup).then(function(res) {
     //Run successful login or not logic
     // alert("ran");
-    console.log(res);
+    // console.log(res);
     if(res === true){
       console.log("Success");
       window.location.href = "/mainPage";

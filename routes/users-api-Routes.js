@@ -38,7 +38,7 @@ module.exports = function(app) {
 
             db.User.create(user).then(function(user) {
                 // localStorage.userID = user.id;
-                res.json(user);
+                res.json(true);
             });
         })
         
