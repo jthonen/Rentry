@@ -133,8 +133,9 @@ var API = {
       // headers: {
       //   "Content-Type": "application/json"
       // },
-      "/api/users", user, function(err, result) {
-        if (err) throw err;
+      "/api/users", user, function(result) {
+        localStorage.userID = result.id;
+        console.log(result);
         window.location.href="/mainPage";
       }
     );
@@ -151,10 +152,9 @@ var API = {
         if (status !== 'success') throw status;
         console.log(result);
         if(result.isValid === true ){
-          localStorage.email = login.email;
-          localStorage.userID = result.userID;
+          setCookie(result.userID);
+          console.log("this is cookie: ", document.cookie);
           window.location.href="/mainPage";
-          console.log("after new location", localStorage.email);
         } else {
           alert("Your email or password does not match.");
         }
@@ -320,3 +320,13 @@ $exampleList.on("click", ".delete", handleDeleteBtnClick);
 //login and sign in buttons
 $(document).on("click", "#login", loginHandler);
 $("#yes-signup").on("click", signUpHandler);
+
+// set cookies
+function setCookie(currUID) {
+  var d = new Date();
+  var userID = "userID";
+  d.setTime(d.getTime() + 60*60*1000);
+  var expires = "expires="+ d.toUTCString();
+  document.cookie = userID + "=" + currUID + ";" + expires + "; path=/";
+  console.log(document.cookie);
+};

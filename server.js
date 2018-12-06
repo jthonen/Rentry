@@ -1,22 +1,24 @@
 require("dotenv").config();
 var express = require("express");
-
+var logger = require('morgan');
 var db = require("./models");
 
 var app = express();
 var PORT = process.env.PORT || 3000;
 
 // Middleware
+app.use(logger('tiny'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
 
 // Routes
 require("./routes/group-api-Routes")(app);
-require("./routes/html-Routes")(app);
+
 require("./routes/item-api-Routes")(app);
 require("./routes/users-api-Routes")(app);
 require("./routes/category-api-Routes")(app);
+require("./routes/html-Routes")(app);
 
 var syncOptions = { force: false };
 

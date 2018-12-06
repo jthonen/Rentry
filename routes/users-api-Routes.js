@@ -37,8 +37,8 @@ module.exports = function(app) {
             console.log("this is the HASHHHHH ", hash);
 
             db.User.create(user).then(function(user) {
-                localStorage.userID = user.id;
-                res.json(true);
+                // localStorage.userID = user.id;
+                res.json(user);
             });
         })
         
@@ -75,7 +75,7 @@ module.exports = function(app) {
                 email: req.body.email
             }
         }).then(function(user) {
-            console.log("\nUSERRRRR\n", user, " \n");
+            //console.log("\nUSERRRRR\n", user, " \n");
             
             pw.verify(user.dataValues.passHash, req.body.password, function(err, isValid) {
                 if(err) {

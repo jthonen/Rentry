@@ -23,6 +23,7 @@ $(document).ready(function() {
                     available = " Not available";
                 }
 
+                console.log(result[i].currentUserID);
                 // check current user
                 if(result[i].currentUserID === null ) {
                     currentUser = " No one has borrowed it";
@@ -30,6 +31,7 @@ $(document).ready(function() {
                 else {
                     currentUser = result[i].currentUserID;
                 }
+                console.log(currentUser);
 
                 $(".ui.stackable.special.centered.cards").append(`
                     <div class="card">
