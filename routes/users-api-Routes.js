@@ -76,11 +76,13 @@ module.exports = function(app) {
             }
         }).then(function(user) {
             //console.log("\nUSERRRRR\n", user, " \n");
+
+            console.log("\nserver-side", user);
             
             pw.verify(user.dataValues.passHash, req.body.password, function(err, isValid) {
-                if(err) {
-                    throw err;
-                }
+                // if(err) {
+                //     throw err;
+                // }
                 // if (isValid) window.localStorage.userID = user.id;
                 msg = isValid ? 'Passwords match!' : 'Wrong password';
                 // var isValid = isValid ? true : false;

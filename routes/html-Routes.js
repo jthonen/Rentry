@@ -1,5 +1,6 @@
 var db = require("../models");
 var path = require("path");
+var passport = require("passport");
 
 module.exports = function(app) {
 
@@ -18,6 +19,14 @@ module.exports = function(app) {
   //     next();
   //   })
   // });
+
+  // passport authenticate step, 
+  // app.post("/",
+  //   passport.authenticate("local", { failureRedirect: "/"} )),
+  //   function(req, res) {
+  //     console.log("\n", req, "\n");
+  //     res.redirect("/mainPage");
+  //   };
 
   // Load index page
   app.get("/mainPage", function(req, res) {

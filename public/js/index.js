@@ -108,9 +108,9 @@ var API = {
       data: group
     });
   },
-  getGroup: function(){
+  getGroup: function(code){
     return $.ajax({
-      url: "/api/groups",
+      url: "/api/groups/" + code,
       type: "GET"
     });
   },
@@ -155,6 +155,7 @@ var API = {
           setCookie(result.userID);
           console.log("this is cookie: ", document.cookie);
           window.location.href="/mainPage";
+          console.log("after new location", localStorage.email);
         } else {
           alert("Your email or password does not match.");
         }
@@ -260,17 +261,28 @@ var loginHandler = function(event) {
 var signUpHandler = function(event) {
   event.preventDefault();
   
-  // alert("hello");
+  if($(".sign-up-empty-div").is(":empty")) {
+    alert("Please enter the invitation code if applicable, else start a new group.");
+  };
 
   if ($("#password-signup").val().trim() !== $("#confirm-password-signup").val().trim()){
     alert("Passwords do not match");
     return;
-  }
+  };
+
+  if($("#invitation-code") !== null) {
+    var inviCode = $("#invitation-code").val().trim();
+    console.log(inviCode);
+
+    API.getGroup(inviCode);
+  }  
+
   var signup = {
     email: $("#email-signup").val().trim(),
     password: $("#password-signup").val().trim(),
     firstName: $("#first-name-signup").val().trim(),
-    lastName: $("#last-name-signup").val().trim()
+    lastName: $("#last-name-signup").val().trim(),
+    GroupId: $("#group-name").val().trim()  // this is not really correct, I need to create a group (need another group-creating calling function), and then assign the group id here
   };
   console.log("this is the json signup object");
   console.log(JSON.stringify(signup));
@@ -320,6 +332,30 @@ $exampleList.on("click", ".delete", handleDeleteBtnClick);
 //login and sign in buttons
 $(document).on("click", "#login", loginHandler);
 $("#yes-signup").on("click", signUpHandler);
+
+// creating group
+$("#createGroup-btn").on("click", function(event) {
+  event.preventDefault();
+
+  $(".sign-up-empty-div").html(`
+    <div class="field">
+      <label>Group Name</label>
+      <input type="text" id="group-name">
+    </div>
+  `)
+});
+
+// invitation code
+$("#invited-btn").on("click", function(event) {
+  event.preventDefault();
+
+  $(".sign-up-empty-div").html(`
+    <div class="field">
+      <label>Invitation Code</label>
+      <input type="text" id="invitation-code">
+    </div>
+  `)
+});
 
 // set cookies
 function setCookie(currUID) {
