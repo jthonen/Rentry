@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "root",
-    "password": "",
-    "database": "sharePac",
+    "username": "ed9sz9ju7q13kis8",
+    "password": "nwxccsc6dcvxa5rd",
+    "database": "mpf1r3s10hdxskak",
     "host": "localhost",
     "port": 3306,
     "dialect": "mysql"
