@@ -151,6 +151,8 @@ var API = {
         if (status !== 'success') throw status;
         console.log(result);
         if(result.isValid === true ){
+          setCookie(result.userID);
+          console.log("this is cookie: ", document.cookie);
           localStorage.email = login.email;
           localStorage.userID = result.userID;
           window.location.href="/mainPage";
@@ -175,6 +177,12 @@ var API = {
     });
   }
 };
+
+//logout and delete cookies  (not sure working)        -------------------------------------------
+$("#logout").on("click", function() {
+  document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  console.log("logged out and cookies deleted");
+}); 
 
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function() {
@@ -320,3 +328,13 @@ $exampleList.on("click", ".delete", handleDeleteBtnClick);
 //login and sign in buttons
 $(document).on("click", "#login", loginHandler);
 $("#yes-signup").on("click", signUpHandler);
+
+// set cookies
+function setCookie(currUID) {
+  var d = new Date();
+  var userID = "userID";
+  d.setTime(d.getTime() + 60*60*1000);
+  var expires = "expires="+ d.toUTCString();
+  document.cookie = userID + "=" + currUID + ";" + expires + "; path=/";
+  console.log(document.cookie);
+ };

@@ -12,8 +12,10 @@ $(document).ready(function() {
             quantity: $(".ui.dropdown.quantity").val().trim(),
             category: $(".ui.dropdown.category").val().trim(),
             description: $("#description").val().trim(),
+            pic: $("#item-img").val().trim(),
             ownerID: localStorage.userID,
-            imageLink: $("#image-link").val()
+            userID: localStorage.userID,
+            currentUserID: localStorage.userID
         };
     
         console.log(item);
@@ -36,7 +38,7 @@ $(document).ready(function() {
             url: "/api/items",
             type: "GET"
         }).then(function(data) {
-            console.log(data);
+            // console.log(data);
             for(var i = 0; i < data.length; i++) {
                 if(data[i].available === true) {
                     $(".ui.stackable.special.centered.cards").append(`
@@ -53,7 +55,7 @@ $(document).ready(function() {
                                     <div class="ui green ribbon label">
                                         <i class="thumbs up outline icon"></i> Available
                                     </div>
-                                    <img src="https://images-na.ssl-images-amazon.com/images/I/613BCaoaS6L._UX385_.jpg">
+                                    <img src="${data[i].pic}">
                                 </div>
                             </div>
                             <div class="content available">
