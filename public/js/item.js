@@ -207,4 +207,8 @@ $(document).ready(function() {
                 alert("Successfully returned the item. Please contact the owner.");
             })
         });
+
+        $(document).on("click", "#search-submit", function(event) {
+            var userinput = $()
+        });
 });
