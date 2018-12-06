@@ -150,6 +150,7 @@ $(document).ready(function() {
                     </div>
                 </div>
             `);
+
             
             // console.log($(this).data("available"));
             if($(this).data("available") === false) {
@@ -211,4 +212,35 @@ $(document).ready(function() {
         $(document).on("click", "#search-submit", function(event) {
             var userinput = $()
         });
+
+        // Semantic Hover on Card
+        $('.special.cards .image').dimmer({
+            on: 'hover'
+        });
+        //Semantic activate popup (learn more btn)
+        $(".learn-more").on("click", function () {
+            $('.popup-avail').modal('show');
+        });
+        $(".learn-more-taken").on("click", function () {
+            $('.popup-unavail').modal('show');
+        });
+        //Semantic activate popup (available)
+        $(".available").on("click", function () {
+            $('.popup-avail').modal('show');
+        });
+        //Semantic activate popup (wait-list-btn)
+        $(".wait-list-btn").on("click", function () {
+            $('.waitlist').modal('show');
+        });
+        //Semantic activate popup (add-item)
+        $(".add-item").on("click", function () {
+            $('.add-item-popup').modal('show');
+        });
+        //Semantic close popup (deny button)
+        $(".deny").on("click", function () {
+            $('.ui.modal').modal('hide');
+        });
+        //semantic make dropdown work in add item
+        $('.selection.dropdown').dropdown();
+        
 });
