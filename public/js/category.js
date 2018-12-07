@@ -51,7 +51,7 @@ $(document).ready(function() {
                                     <div class="center">
                                         <div class="ui primary button learn-more" data-id="${result[i].id}" data-name="${result[i].name}" data-description="${result[i].description}"
                                             data-quantity="${result[i].quantity}" data-category="${result[i].category}" data-currentuser="${currentUser}"
-                                            data-image="${result[i].pic}" data-available="${result[i].available}"}>Details</div>
+                                            data-image="${result[i].pic}" data-available="${result[i].available}" data-owner="${result[i].ownerID}"}>Details</div>
                                     </div>
                                 </div>
                             </div>
@@ -73,6 +73,8 @@ $(document).ready(function() {
             $('.special.cards .image').dimmer({
                 on: 'hover'
             });
+
+        });
             //Semantic activate popup (learn more btn)
             $(document).on("click", ".learn-more", function (event) {
                 event.preventDefault();
@@ -99,6 +101,7 @@ $(document).ready(function() {
                             <div class="ui header categories">Category: ${$(this).data("category")}</div>
                             <!--current-user div-->
                             <h3 class="current-user">Current User: ${$(this).data("currentuser")}</h3>
+                            <h3 class="owner">Owner: ${$(this).data("owner")}</h3>
                         </div>
                     </div>
                     <!--borrow or deny buttons-->
@@ -171,7 +174,6 @@ $(document).ready(function() {
                     alert("Successfully returned the item. Please contact the owner.");
                 })
             })
-        });
     });
     
 });
