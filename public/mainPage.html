@@ -7,6 +7,7 @@
 
     <!-- Link to Semantic UI -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="./styles/style.css">
     <!-- Link to the jQuery Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Link to Semantic UI Script -->
@@ -20,12 +21,13 @@
     <!--Navbar-->
     <div class="ui huge menu">
         <a class="item">
-            <div class="item">
-                <img class="logo" src="https://github.com/jthonen/Rentry/blob/master/public/images/sharePac(head).png?raw=true"
+            <img class="logo" src="https://github.com/jthonen/Rentry/blob/master/public/images/sharePac(head).png?raw=true"
                     alt="company logo">
-            </div>
-            <!--add-item button-->
-            <div class="ui primary basic button add-item">Add Item</div>
+            <h2>SharePac</h2>
+        </a>
+        <!--add-item button-->
+        <a class="item">
+        <div class="ui primary basic button add-item">Add Item</div>
         </a>
         <a class="item">
             <div class="ui category search">
@@ -38,8 +40,8 @@
     <div class="right menu">
         <a class="item">
             <div class="field">
-                <button class="small ui yellow button" id="searchCategory">Sort by Category</button>
-                <select class="ui selection dropdown" id="category">
+                    <button class="small ui yellow button" id="searchCategory">Sort by Category</button>
+                    <select class="ui selection dropdown" id="category">
                     <option class="item all-select" value="all">All Items</option>
                     <option class="item borrowed" value="borrowed">Borrowed</option>
                     <option class="item books-select" value="kitchen">Kitchen</option>
