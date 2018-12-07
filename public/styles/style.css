@@ -71,8 +71,8 @@ h3 {
 .statement {
     grid-row: 3;
     grid-column: 2;
-
 }
+
 
 @media screen and (max-width: 768px) {
 
