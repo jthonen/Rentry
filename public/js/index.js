@@ -345,7 +345,7 @@ $("#createGroup-btn").on("click", function(event) {
 
   $(".sign-up-empty-div").html(`
     <div class="field">
-      <label>Group Name</label>
+      <label>Pac Name</label>
       <input type="text" id="group-name">
     </div>
   `)
