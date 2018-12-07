@@ -35,6 +35,16 @@ module.exports = function(app) {
         }
     });
 
+    app.get("/api/category/myItems/:id", function(req, res) {
+        db.Item.findAll({
+            where: {
+                ownerID: req.params.id
+            }
+        }).then(function(result) {
+            res.json(result);
+        })
+    })
+
     app.get("/api/category/borrowed/:userID", function(req,res) {
 
         console.log("this is category searched: \n", req.params.category, "\n");
