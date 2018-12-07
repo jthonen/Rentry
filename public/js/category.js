@@ -210,11 +210,11 @@ $(document).ready(function() {
 
                 if(JSON.stringify($(this).data("owner")) === newCookie) {
                     $(".interchangeable").html(`
-                        <div class="ui positive right labeled icon button returnItem" data-id="${$(this).data("id")}">
+                        <div class="ui positive right labeled icon button editItem" data-id="${$(this).data("id")}">
                             Edit
                             <i class="checkmark icon"></i>
                         </div><br><br>
-                        <div class="ui positive right labeled icon button returnItem" data-id="${$(this).data("id")}">
+                        <div class="ui positive right labeled icon button deleteItem" data-id="${$(this).data("id")}">
                             Delete
                             <i class="checkmark icon"></i>
                         </div>
@@ -223,6 +223,19 @@ $(document).ready(function() {
 
                 $('.popup-avail').modal('show');
             });
+
+            $(document).on("click", ".deleteItem", function(event) {
+                var itemID = $(this).data("id");
+                $.ajax({
+                    url: "/api/items/" + itemID,
+                    type: "DELETE"
+                    }).then(function(result){
+                        //  console.log(result);
+                        //  $(".currentUser").text("Current User: " + result.firstName);
+                        location.reload();
+                        alert("Successfully deleted the item!");
+                    });
+            })
 
             $(document).on("click", ".borrowItem", function(event){
                 //borrow item

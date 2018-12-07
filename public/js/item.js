@@ -210,6 +210,8 @@ $(document).ready(function() {
             })
         });
 
+        
+
         $(document).on("click", "#search-submit", function(event) {
             var userinput = $()
         });
